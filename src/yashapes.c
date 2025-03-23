@@ -33,3 +33,5 @@ void DrawCircle(Vec2 zeroPoint, /* float radius, */ Color color) { // TODO: Comp
         glVertex2f(zeroPoint.x, zeroPoint.y);
     glEnd();
 } // Radius commented just for normal clang logs (Absolute coding)
+
+// void DrawTriangle(Vec2 a, Vec2 b, Vec2 c) {} // TODO: Complete

@@ -6,6 +6,8 @@
 #define MAP_SIZE 9
 #define TILE_SIZE 64
 
+#define SPEED 0.1
+
 int map[MAP_SIZE][MAP_SIZE] = {
     {1, 1, 1, 1, 1, 1, 1, 1},
     {1, 0, 0, 0, 0, 0, 0, 1},
@@ -100,7 +102,7 @@ int main() {
         .plane = {0.0, 0.66}
     };
 
-    SetFPS(45);
+    SetFPS(60);
     while (!WindowClosed()) {
         LimitFPS();
         if (KeyPressed(KeyRight)) {
@@ -119,13 +121,13 @@ int main() {
             player.plane.x = player.plane.x * cos(0.1) - player.plane.y * sin(0.1);
             player.plane.y = oldPlaneX * sin(0.1) + player.plane.y * cos(0.1);
         }
-        if (KeyPressed(KeyUp)) {
-            if (map[(int)(player.position.x + player.direction.x * 0.1)][(int)(player.position.y)] == 0) player.position.x += player.direction.x * 0.1;
-            if (map[(int)(player.position.x)][(int)(player.position.y + player.direction.y * 0.1)] == 0) player.position.y += player.direction.y * 0.1;
+        if (KeyPressed(KeyW)) {
+            if (map[(int)(player.position.x + player.direction.x * 0.1)][(int)(player.position.y)] == 0) player.position.x += player.direction.x * SPEED;
+            if (map[(int)(player.position.x)][(int)(player.position.y + player.direction.y * 0.1)] == 0) player.position.y += player.direction.y * SPEED;
         }
-        if (KeyPressed(KeyDown)) {
-            if (map[(int)(player.position.x - player.direction.x * 0.1)][(int)(player.position.y)] == 0) player.position.x -= player.direction.x * 0.1;
-            if (map[(int)(player.position.x)][(int)(player.position.y - player.direction.y * 0.1)] == 0) player.position.y -= player.direction.y * 0.1;
+        if (KeyPressed(KeyS)) {
+            if (map[(int)(player.position.x - player.direction.x * 0.1)][(int)(player.position.y)] == 0) player.position.x -= player.direction.x * SPEED;
+            if (map[(int)(player.position.x)][(int)(player.position.y - player.direction.y * 0.1)] == 0) player.position.y -= player.direction.y * SPEED;
         }
 
         ClearScreen();

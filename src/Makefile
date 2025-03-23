@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -fPIC -Wall -Wextra -O2
 LDFLAGS = -shared -lGL -lglfw -lm
-SRCS = yacore.c yamath.c yaphysics.c yashapes.c yatexture.c
+SRCS = yacore.c yamath.c yaphysics.c yashapes.c yatexture.c yatext.c
 OBJS = $(SRCS:.c=.o)
 TARGET = libyagl.so
 
@@ -16,7 +16,7 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f /$(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET)
 
 install: $(TARGET)
 	cp $(TARGET) /usr/local/lib/

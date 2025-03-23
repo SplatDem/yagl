@@ -1,7 +1,7 @@
 #ifndef YAPI_H
 #define YAPI_H
 
-#define YAGL_VERSION "0.1.0" // First public version
+#define YAGL_VERSION "0.2.0" // Add text support
 
 #define ERROR   "\x1b[31mERROR\x1b[0m"
 #define WARNING "\x1b[33mWARNING\x1b[0m"
@@ -18,7 +18,8 @@
 #define KEY_RELEASE 2
 
 // Colors TODO: Add more colors
-#define WHITE (Color){255, 255, 255, 255}
+#define /* World looks */ WHITE (Color){255, 255, 255, 255}
+#define /* World looks */ RED (Color){255, 0, 0, 255}
 
 // RGB + Alpha
 typedef struct { unsigned char r, g, b, a; } Color;
@@ -55,12 +56,17 @@ typedef struct {
     int format;
 } Texture;
 
-typedef struct Matrix {
-    float m0, m4, m8, m12;
-    float m1, m5, m9, m13;
-    float m2, m6, m10, m14;
-    float m3, m7, m11, m15;
-} Matrix;
+typedef struct { // Stoled from stb_truetype.h
+   unsigned short x0,y0,x1,y1;
+   float xoff, yoff, xadvance;
+} Bakedchar;
+
+// Font
+typedef struct {
+    unsigned int textureID;
+    Bakedchar cdata[96];
+    float fontSize;
+} Font;
 
 // Keyboard keys
 typedef enum {
@@ -171,6 +177,10 @@ Texture LoadTexture(const char *filepath);
 void    UnloadImage(Image image);
 void    DrawTexture(Texture texture, int posX, int posY, int width, int height);
 void    UnloadTexture(Texture texture);
+
+// Text
+Font LoadFont(const char *fontPath, float fontSize);
+void DrawText(Font font, const char *text, float x, float y, float scale);
 
 // Input
 int KeyPressed(Key key);
