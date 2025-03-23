@@ -9,10 +9,7 @@ Font LoadFont(const char *fontPath, float fontSize) { // TODO: Make it possible 
     font.fontSize = fontSize;
 
     FILE *fontFile = fopen(fontPath, "rb");
-    if (!fontFile) {
-        printl(ERROR, "Failed to open font file: %s\n", fontPath);
-        exit(EXIT_FAILURE);
-    }
+    if (!fontFile) printl(ERROR, "Failed to open font file: %s\n", fontPath);
 
     fseek(fontFile, 0, SEEK_END);
     long fileSize = ftell(fontFile);
