@@ -1,4 +1,4 @@
-> ![WARNING]
+> [!WARNING]
 > Library in the early stage of development.
 
 # YAGL (Yet Another Graphic Library)
