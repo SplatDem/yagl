@@ -1,3 +1,6 @@
+> ![WARNING]
+> Library in the early stage of development.
+
 # YAGL (Yet Another Graphic Library)
 
 Yagl is a simple and easy to use library for creating OpenGL based applications.
