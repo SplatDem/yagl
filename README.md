@@ -9,6 +9,7 @@ Yagl is a simple and easy to use library for creating OpenGL based applications.
  - Draw basic shapes
  - Render textures (Almost all existing formats)
  - Collision shapes
+ - **SOON**: ttf/otf text rendering
  - **SOON**: Audio
  - **SOON**: Shaders support
 
