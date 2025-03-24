@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -fPIC -Wall -Wextra -O2
 LDFLAGS = -shared -lGL -lglfw -lm
-SRCS = yacore.c yamath.c yaphysics.c yashapes.c yatexture.c yatext.c
+SRCS = yacore.c yamath.c yaphysics.c yashapes.c yatexture.c yatext.c yacamera.c
 OBJS = $(SRCS:.c=.o)
 TARGET = libyagl.so
 

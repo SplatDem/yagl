@@ -19,8 +19,8 @@ Font LoadFont(const char *fontPath, float fontSize) { // TODO: Make it possible 
     fread(ttfBuffer, 1, fileSize, fontFile);
     fclose(fontFile);
 
-    unsigned char* tempBitmap = (unsigned char*)malloc(512 * 512);
-    stbtt_BakeFontBitmap(ttfBuffer, 0, fontSize, tempBitmap, 512, 512, 32, 96, font.cdata); // Just ignore it
+    unsigned char *tempBitmap = (unsigned char*)malloc(512 * 512);
+    stbtt_BakeFontBitmap(ttfBuffer, 0, fontSize, tempBitmap, 512, 512, 32, 96, font.cdata); // Just ignore this
 
     glGenTextures(1, &font.textureID);
     glBindTexture(GL_TEXTURE_2D, font.textureID);
@@ -33,12 +33,13 @@ Font LoadFont(const char *fontPath, float fontSize) { // TODO: Make it possible 
     return font;
 }
 
-void DrawText(Font font, const char *text, float x, float y, float scale) {
+void DrawText(Font font, const char *text, float x, float y, float scale, Color color) {
     glBindTexture(GL_TEXTURE_2D, font.textureID);
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    glColor4ub(color.r, color.g, color.b, color.a);
     glBegin(GL_QUADS);
     for (const char *p = text; *p; p++) {
         if (*p >= 32 /*  && *p < 128 */ ) { // FIX: Result of comparison of constant 128 with expression of type 'const char' is always true

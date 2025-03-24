@@ -24,10 +24,7 @@
 // RGB + Alpha
 typedef struct { unsigned char r, g, b, a; } Color;
 
-// Math vector with 2 directoins
 typedef struct { float x, y; } Vec2;
-
-// Math vector with 3 directions
 typedef struct { float x, y, z; } Vec3;
 
 typedef struct { float left, right, bottom, top; } Hitbox;
@@ -56,7 +53,7 @@ typedef struct {
     int format;
 } Texture;
 
-typedef struct { // Stoled from stb_truetype.h
+typedef struct { // Stolen from stb_truetype.h
    unsigned short x0,y0,x1,y1;
    float xoff, yoff, xadvance;
 } Bakedchar;
@@ -67,6 +64,15 @@ typedef struct {
     Bakedchar cdata[96];
     float fontSize;
 } Font;
+
+// Camera 2D
+typedef struct {
+    float x, y;
+    float zoom;
+    float rotation;
+    int viewportWidth;
+    int viewportHeight;
+} Camera;
 
 // Keyboard keys
 typedef enum {
@@ -180,10 +186,16 @@ void    UnloadTexture(Texture texture);
 
 // Text
 Font LoadFont(const char *fontPath, float fontSize);
-void DrawText(Font font, const char *text, float x, float y, float scale);
+void DrawText(Font font, const char *text, float x, float y, float scale, Color color);
 
 // Input
-int KeyPressed(Key key);
+int KeyAction(Key key, int state); // KEY_PRESS or KEY_RELEASE
+
+// Camera
+Camera InitCamera(int viewportWidth, int viewportHeight);
+void   BeginCamera(Camera* cam);
+void   EndCamera();
+void   ScreenToWorld(Camera* cam, float screenX, float screenY, float* worldX, float* worldY);
 
 // Physics
 Hitbox CreateHitbox(float x, float y, float width, float height);

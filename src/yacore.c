@@ -42,7 +42,7 @@ int  WindowClosed() { return glfwWindowShouldClose(window); }
 void ClearScreen() { glClearColor(0.0f, 0.0f, 0.0f, 1.0f); glClear(GL_COLOR_BUFFER_BIT); }
 void SwapBuffer()  { glfwSwapBuffers(window); glfwPollEvents(); }
 
-int KeyPressed(Key key) { return glfwGetKey(window, key) == KEY_PRESS; }
+int KeyAction(Key key, int state) { return glfwGetKey(window, key) == state; }
 
 void SetFPS(int fps) {
     if (fps > 0) {
@@ -62,8 +62,8 @@ void LimitFPS() {
 
     if (elapsedTime < frameTime) {
         double sleepTime = (frameTime - elapsedTime) * 1000;
-	struct timespec ts = { 0, (long)(sleepTime * 1000000) };
-	nanosleep(&ts, NULL);
+        struct timespec ts = { 0, (long)(sleepTime * 1000000) };
+        nanosleep(&ts, NULL);
     }
 
     lastTime = currentTime;
@@ -72,8 +72,8 @@ void LimitFPS() {
 void DrawHitbox(const Hitbox* hb, Color color) {
     glColor4f(color.r, color.g, color.b, color.a);
     glBegin(GL_LINE_LOOP);
-    glVertex2f(hb->left, hb->bottom); glVertex2f(hb->right, hb->bottom);
-    glVertex2f(hb->right, hb->top); glVertex2f(hb->left, hb->top);
+        glVertex2f(hb->left, hb->bottom); glVertex2f(hb->right, hb->bottom);
+        glVertex2f(hb->right, hb->top); glVertex2f(hb->left, hb->top);
     glEnd();
 }
 

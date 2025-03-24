@@ -105,7 +105,7 @@ int main() {
     SetFPS(60);
     while (!WindowClosed()) {
         LimitFPS();
-        if (KeyPressed(KeyRight)) {
+        if (KeyAction(KeyRight, KEY_PRESS)) {
             double oldDirX = player.direction.x;
             player.direction.x = player.direction.x * cos(-0.1) - player.direction.y * sin(-0.1);
             player.direction.y = oldDirX * sin(-0.1) + player.direction.y * cos(-0.1);
@@ -113,7 +113,7 @@ int main() {
             player.plane.x = player.plane.x * cos(-0.1) - player.plane.y * sin(-0.1);
             player.plane.y = oldPlaneX * sin(-0.1) + player.plane.y * cos(-0.1);
         }
-        if (KeyPressed(KeyLeft)) {
+        if (KeyAction(KeyLeft, KEY_PRESS)) {
             double oldDirX = player.direction.x;
             player.direction.x = player.direction.x * cos(0.1) - player.direction.y * sin(0.1);
             player.direction.y = oldDirX * sin(0.1) + player.direction.y * cos(0.1);
@@ -121,11 +121,11 @@ int main() {
             player.plane.x = player.plane.x * cos(0.1) - player.plane.y * sin(0.1);
             player.plane.y = oldPlaneX * sin(0.1) + player.plane.y * cos(0.1);
         }
-        if (KeyPressed(KeyW)) {
+        if (KeyAction(KeyW, KEY_PRESS)) {
             if (map[(int)(player.position.x + player.direction.x * 0.1)][(int)(player.position.y)] == 0) player.position.x += player.direction.x * SPEED;
             if (map[(int)(player.position.x)][(int)(player.position.y + player.direction.y * 0.1)] == 0) player.position.y += player.direction.y * SPEED;
         }
-        if (KeyPressed(KeyS)) {
+        if (KeyAction(KeyS, KEY_PRESS)) {
             if (map[(int)(player.position.x - player.direction.x * 0.1)][(int)(player.position.y)] == 0) player.position.x -= player.direction.x * SPEED;
             if (map[(int)(player.position.x)][(int)(player.position.y - player.direction.y * 0.1)] == 0) player.position.y -= player.direction.y * SPEED;
         }

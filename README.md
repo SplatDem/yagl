@@ -10,6 +10,7 @@ Yagl is a simple and easy to use library for creating OpenGL based applications.
  - Render textures (Almost all existing formats)
  - Collision shapes
  - ttf/otf fonts rendering
+ - 2D Camera that can move, zoom and rotate
  - **SOON**: Audio
  - **SOON**: Shaders support
 
@@ -36,13 +37,18 @@ clang basic_example.c -o program -lyagl
 ### Output
 ![basic example](assets/yagl_basic_example.png)
 
------------------------------------------------
------------------------------------------------
+
 # --------------------Extra--------------------
------------------------------------------------
+
 
 ## Raycasting example
 ![raycasting](assets/raycasting_example.png)
 
 ## Social links
  - Telegram: https://t.me/imperativeprogru (ONLY FOR RUSSIAN SPEACKERS)
+
+# TODO
+ - **[ACTIVE]** Complete and fix shapes
+ - **[PLANNED]** Add some kind of window global data
+ - **[ACTIVE]** Mouse support
+ - **[PLANNED]** Gamepad support
