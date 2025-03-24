@@ -42,7 +42,9 @@ int  WindowClosed() { return glfwWindowShouldClose(window); }
 void ClearScreen() { glClearColor(0.0f, 0.0f, 0.0f, 1.0f); glClear(GL_COLOR_BUFFER_BIT); }
 void SwapBuffer()  { glfwSwapBuffers(window); glfwPollEvents(); }
 
-int KeyAction(Key key, int state) { return glfwGetKey(window, key) == state; }
+int  KeyAction(Key key, int state) { return glfwGetKey(window, key) == state; }
+int  MouseAction(MouseButton button, int state) { return glfwGetMouseButton(window, button) == state; }
+void GetCursorPos(double *posX, double *posY) { glfwGetCursorPos(window, posX, posY); }
 
 void SetFPS(int fps) {
     if (fps > 0) {

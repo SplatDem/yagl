@@ -190,6 +190,8 @@ void DrawText(Font font, const char *text, float x, float y, float scale, Color 
 
 // Input
 int KeyAction(Key key, int state); // KEY_PRESS or KEY_RELEASE
+int MouseAction(MouseButton button, int state);
+void GetCursorPos(double *posX, double *posY);
 
 // Camera
 Camera InitCamera(int viewportWidth, int viewportHeight);
@@ -199,11 +201,11 @@ void   ScreenToWorld(float screenX, float screenY, float *worldX, float *worldY)
 
 // Physics
 Hitbox CreateHitbox(float x, float y, float width, float height);
-void   UpdateHitbox(Hitbox* hb, float x, float y);
-bool   collision(const Hitbox* hb1, const Hitbox* hb2);
-int    CircleCollision(const CircleHitbox* c1, const CircleHitbox* c2);
-void   InitObject(Object* obj, float x, float y, float width, float height);
-void   UpdateObject(Object* obj, float newX, float newY);
-void   DrawHitbox(const Hitbox* hb, Color color);
+void   UpdateHitbox(Hitbox *hb, float x, float y);
+bool   collision(const Hitbox *hb1, const Hitbox *hb2);
+int    CircleCollision(const CircleHitbox *c1, const CircleHitbox *c2);
+void   InitObject(Object *obj, float x, float y, float width, float height);
+void   UpdateObject(Object *obj, float newX, float newY);
+void   DrawHitbox(const Hitbox *hb, Color color);
 
 #endif
