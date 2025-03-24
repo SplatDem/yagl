@@ -52,3 +52,4 @@ clang basic_example.c -o program -lyagl
  - **[PLANNED]** Add some kind of window global data
  - **[ACTIVE]** Mouse support
  - **[PLANNED]** Gamepad support
+ - **[ACTIVE]** Fix colors

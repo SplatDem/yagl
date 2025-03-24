@@ -13,7 +13,7 @@ Camera InitCamera(int viewportWidth, int viewportHeight) {
     return cam;
 }
 
-void BeginCamera(Camera* cam) {
+void BeginCamera(Camera *cam) {
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
     glLoadIdentity();
@@ -25,11 +25,8 @@ void BeginCamera(Camera* cam) {
     glLoadIdentity();
 
     glTranslatef(cam->x, cam->y, 0.0f);
-
     glRotatef(cam->rotation, 0.0f, 0.0f, 1.0f);
-
     glScalef(cam->zoom, cam->zoom, 1.0f);
-
     glTranslatef(-cam->x, -cam->y, 0.0f);
 }
 
@@ -40,7 +37,4 @@ void EndCamera() {
     glPopMatrix();
 }
 
-void ScreenToWorld(Camera* cam, float screenX, float screenY, float* worldX, float* worldY) {
-    *worldX = screenX;
-    *worldY = screenY;
-}
+void ScreenToWorld(float screenX, float screenY, float *worldX, float *worldY) { *worldX = screenX; *worldY = screenY; }

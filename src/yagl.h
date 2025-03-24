@@ -1,7 +1,7 @@
 #ifndef YAPI_H
 #define YAPI_H
 
-#define YAGL_VERSION "0.2.0" // Add text support
+#define YAGL_VERSION "0.3.0" // Add camera support
 
 #define ERROR   "\x1b[31mERROR\x1b[0m"
 #define WARNING "\x1b[33mWARNING\x1b[0m"
@@ -174,7 +174,7 @@ void LimitFPS();
 void DrawLine(int startPosX, int startPosY, int endPosX, int endPosY, Color color);
 void DrawLineV(Vec2 startPos, Vec2 endPos, Color color);
 void DrawRect(Vec2 topLeft, Vec2 bottomRight, Color color);
-void DrawCircle(Vec2 zeroPoint, /* float radius, */ Color color); // Radius commented just for normal clang logs (Absolute coding)
+void DrawCircle(Vec2 center, float radius, Color color);
 
 // Textures and images
 Image   LoadImage(const char *filepath);
@@ -193,9 +193,9 @@ int KeyAction(Key key, int state); // KEY_PRESS or KEY_RELEASE
 
 // Camera
 Camera InitCamera(int viewportWidth, int viewportHeight);
-void   BeginCamera(Camera* cam);
+void   BeginCamera(Camera *cam);
 void   EndCamera();
-void   ScreenToWorld(Camera* cam, float screenX, float screenY, float* worldX, float* worldY);
+void   ScreenToWorld(float screenX, float screenY, float *worldX, float *worldY);
 
 // Physics
 Hitbox CreateHitbox(float x, float y, float width, float height);
