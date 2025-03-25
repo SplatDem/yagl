@@ -2,25 +2,31 @@
 #include <GL/gl.h>
 #include "yagl.h"
 
-void DrawLine(int startPosX, int startPosY, int endPosX, int endPosY, Color color) {
-    glBegin(GL_LINES);
-        glColor4f(color.r, color.g, color.b, color.a);
-        glVertex2f((float)startPosX, (float)startPosY);
-        glVertex2f((float)endPosX, (float)endPosY);
-    glEnd();
-}
+// void DrawLine(int startPosX, int startPosY, int endPosX, int endPosY, Color color) {
+//     glBegin(GL_LINES);
+//         glColor4ub(color.r, color.g, color.b, color.a);
+//         glVertex2f((float)startPosX, (float)startPosY);
+//         glVertex2f((float)endPosX, (float)endPosY);
+//     glEnd();
+// }
+
+void DrawLine(int startPosX, int startPosY, int endPosX, int endPosY, Color color)
+{ DrawLineV((Vec2){(float)startPosX, (float)startPosY}, (Vec2){(float)endPosX, (float)endPosY}, color); }
 
 void DrawLineV(Vec2 startPos, Vec2 endPos, Color color) {
     glBegin(GL_LINES);
-        glColor4f(color.r, color.g, color.b, color.a);
+        glColor4ub(color.r, color.g, color.b, color.a);
         glVertex2f(startPos.x, startPos.y);
         glVertex2f(endPos.x, endPos.y);
     glEnd();
 }
 
-void DrawRect(Vec2 topLeft, Vec2 bottomRight, Color color) {
+void DrawRect(int topLeftX, int topLeftY, int bottomRightX, int bottomRightY, Color color)
+{ DrawRectV((Vec2){(float)topLeftX, (float)topLeftY}, (Vec2){(float)bottomRightX, (float)bottomRightY}, color); }
+
+void DrawRectV(Vec2 topLeft, Vec2 bottomRight, Color color) {
     glBegin(GL_QUADS);
-        glColor4f(color.r, color.g, color.b, color.a);
+        glColor4ub(color.r, color.g, color.b, color.a);
         glVertex2f(topLeft.x, topLeft.y);
         glVertex2f(bottomRight.x, topLeft.y);
         glVertex2f(bottomRight.x, bottomRight.y);
@@ -34,7 +40,7 @@ void DrawCircle(Vec2 center, float radius, Color color) {
 
     glBegin(GL_TRIANGLE_FAN);
         glColor4f(color.r, color.g, color.b, color.a);
-        glVertex2f(center.x, center.y); // Центр
+        glVertex2f(center.x, center.y);
         for (int i = 0; i <= segments; i++) {
             float angle = i * angleIncrement;
             float x = center.x + cosf(angle) * radius;

@@ -173,7 +173,8 @@ void LimitFPS();
 // Shapes
 void DrawLine(int startPosX, int startPosY, int endPosX, int endPosY, Color color);
 void DrawLineV(Vec2 startPos, Vec2 endPos, Color color);
-void DrawRect(Vec2 topLeft, Vec2 bottomRight, Color color);
+void DrawRect(int topLeftX, int topLeftY, int bottomRightX, int bottomRightY, Color color);
+void DrawRectV(Vec2 topLeft, Vec2 bottomRight, Color color);
 void DrawCircle(Vec2 center, float radius, Color color);
 
 // Textures and images

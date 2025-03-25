@@ -38,6 +38,7 @@ void yaGLinit(const char *title, int width, int height) {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
+
 int  WindowClosed() { return glfwWindowShouldClose(window); }
 void ClearScreen() { glClearColor(0.0f, 0.0f, 0.0f, 1.0f); glClear(GL_COLOR_BUFFER_BIT); }
 void SwapBuffer()  { glfwSwapBuffers(window); glfwPollEvents(); }
@@ -71,7 +72,7 @@ void LimitFPS() {
     lastTime = currentTime;
 }
 
-void DrawHitbox(const Hitbox* hb, Color color) {
+void DrawHitbox(const Hitbox *hb, Color color) {
     glColor4f(color.r, color.g, color.b, color.a);
     glBegin(GL_LINE_LOOP);
         glVertex2f(hb->left, hb->bottom); glVertex2f(hb->right, hb->bottom);
