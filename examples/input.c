@@ -3,6 +3,7 @@
 
 int main() {
     InitWindow("Input Example", 699, 699);
+    Font font = LoadFont("VCR_OSD_MONO_1.001.ttf", 16);
 
     double cursor_x, cursor_y;
     int i = 0;
@@ -17,6 +18,7 @@ int main() {
         else printf("Mouse button was pressed %d times\tSpace was pressed %d times\n", i, s);
         ClearScreen();
             DrawCircle((Vec2){cursor_x, cursor_y}, 100, WHITE);
+            DrawText(font, 1, 100, 1, WHITE, "Cursor position: (X: %lf, Y: %lf)", cursor_x, cursor_y);
         SwapBuffer();
     }
     return 0;

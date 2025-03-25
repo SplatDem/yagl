@@ -22,7 +22,7 @@
 #define /* World looks */ RED (Color){255, 0, 0, 255}
 
 // RGB + Alpha
-typedef struct { unsigned char r, g, b, a; } Color;
+typedef struct { float r, g, b, a; } Color;
 
 typedef struct { float x, y; } Vec2;
 typedef struct { float x, y, z; } Vec3;
@@ -187,7 +187,7 @@ void    UnloadTexture(Texture texture);
 
 // Text
 Font LoadFont(const char *fontPath, float fontSize);
-void DrawText(Font font, const char *text, float x, float y, float scale, Color color);
+void DrawText(Font font, float x, float y, float scale, Color color, const char *text, ...);
 
 // Input
 int KeyAction(Key key, int state); // KEY_PRESS or KEY_RELEASE
