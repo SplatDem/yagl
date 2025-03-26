@@ -50,11 +50,11 @@ void DrawText(Font font, float x, float y, float scale, Color color, const char 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glColor4f(color.r / 255.0f, color.g / 255.0f, color.b / 255.0f, color.a / 255.0f);
+    glColor4f(color.r, color.g, color.b, color.a);
     glBegin(GL_QUADS);
 
     for (const char *p = buffer; *p; p++) {
-        if (*p >= 32 && *p < 128) {
+        if (*p >= 32) {
             stbtt_bakedchar *b = (stbtt_bakedchar*)&font.cdata[*p - 32];
 
             float xpos = x + b->xoff * scale;

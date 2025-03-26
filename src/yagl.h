@@ -1,7 +1,7 @@
 #ifndef YAPI_H
 #define YAPI_H
 
-#define YAGL_VERSION "0.3.0" // Add camera support
+#define YAGL_VERSION "0.3.2" // Add camera support
 
 #define ERROR   "\x1b[31mERROR\x1b[0m"
 #define WARNING "\x1b[33mWARNING\x1b[0m"
@@ -14,26 +14,22 @@
     typedef enum bool { false = 0, true = !false } bool;
 #endif
 
-#define KEY_PRESS 1
-#define KEY_RELEASE 2
+#define KEY_PRESS     1
+#define KEY_RELEASE   2
+#define MOUSE_PRESS   1
+#define MOUSE_RELEASE 2
 
 // Colors TODO: Add more colors
-#define /* World looks */ WHITE (Color){255, 255, 255, 255}
-#define /* World looks */ RED (Color){255, 0, 0, 255}
+#define /* World looks */ WHITE (Color){255.0f, 255.0f, 255.0f, 255.0f}
+#define /* World looks */ RED (Color){255.0f, 0.0f, 0.0f, 255.0f}
+#define GREEN (Color){0.0f, 255.0f, 0.0f, 255.0f}
+#define BLUE (Color){0.0f, 0.0f, 255.0f, 255.0f}
 
 // RGB + Alpha
 typedef struct { float r, g, b, a; } Color;
 
 typedef struct { float x, y; } Vec2;
 typedef struct { float x, y, z; } Vec3;
-
-typedef struct { float left, right, bottom, top; } Hitbox;
-typedef struct { float x, y, radius; } CircleHitbox;
-
-typedef struct {
-    float x, y, width, height;
-    Hitbox hitbox;
-} Object;
 
 // Image data in RAM
 typedef struct Image {
@@ -182,7 +178,7 @@ Image   LoadImage(const char *filepath);
 Texture LoadTextureFromImage(Image image);
 Texture LoadTexture(const char *filepath);
 void    UnloadImage(Image image);
-void    DrawTexture(Texture texture, int posX, int posY, int width, int height);
+void    DrawTexture(Texture texture, int posX, int posY, int width, int height, Color color);
 void    UnloadTexture(Texture texture);
 
 // Text
@@ -190,8 +186,8 @@ Font LoadFont(const char *fontPath, float fontSize);
 void DrawText(Font font, float x, float y, float scale, Color color, const char *text, ...);
 
 // Input
-int KeyAction(Key key, int state); // KEY_PRESS or KEY_RELEASE
-int MouseAction(MouseButton button, int state);
+int  KeyAction(Key key, int state); // KEY_PRESS or KEY_RELEASE
+int  MouseAction(MouseButton button, int state); // MOUSE_PRESS or MOUSE_RELEASE
 void GetCursorPos(double *posX, double *posY);
 
 // Camera
@@ -199,14 +195,5 @@ Camera InitCamera(int viewportWidth, int viewportHeight);
 void   BeginCamera(Camera *cam);
 void   EndCamera();
 void   ScreenToWorld(float screenX, float screenY, float *worldX, float *worldY);
-
-// Physics
-Hitbox CreateHitbox(float x, float y, float width, float height);
-void   UpdateHitbox(Hitbox *hb, float x, float y);
-bool   collision(const Hitbox *hb1, const Hitbox *hb2);
-int    CircleCollision(const CircleHitbox *c1, const CircleHitbox *c2);
-void   InitObject(Object *obj, float x, float y, float width, float height);
-void   UpdateObject(Object *obj, float newX, float newY);
-void   DrawHitbox(const Hitbox *hb, Color color);
 
 #endif

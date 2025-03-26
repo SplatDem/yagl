@@ -24,7 +24,7 @@ int main() {
             DrawRectV((Vec2){300, 250}, (Vec2){350, 300}, RED);
 
             DrawRectV((Vec2){100, 100}, (Vec2){150, 150}, (Color){0, 0, 255, 255});
-            DrawTexture(th, 100, 100, 100, 100);
+            DrawTexture(th, 100, 100, 100, 100, WHITE);
         }
         EndCamera();
 

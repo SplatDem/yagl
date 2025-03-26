@@ -22,6 +22,15 @@ void InitWindow(const char *title, int width, int height) {
     printl(NOTE, "GPU Ready");
 }
 
+void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
+    glViewport(0, 0, width, height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, width, height, 0, -1, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+}
+
 void yaGLinit(const char *title, int width, int height) {
     if (!glfwInit()) printl(ERROR, "Failed to initialize OpenGL");
 
@@ -29,6 +38,7 @@ void yaGLinit(const char *title, int width, int height) {
     if (!window) { glfwTerminate(); printl(ERROR, "Failed to create OpenGL window"); }
 
     glfwMakeContextCurrent(window);
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glViewport(0, 0, width, height);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -70,14 +80,6 @@ void LimitFPS() {
     }
 
     lastTime = currentTime;
-}
-
-void DrawHitbox(const Hitbox *hb, Color color) {
-    glColor4f(color.r, color.g, color.b, color.a);
-    glBegin(GL_LINE_LOOP);
-        glVertex2f(hb->left, hb->bottom); glVertex2f(hb->right, hb->bottom);
-        glVertex2f(hb->right, hb->top); glVertex2f(hb->left, hb->top);
-    glEnd();
 }
 
 // Print Log

@@ -52,9 +52,10 @@ Texture LoadTextureFromImage(Image image) {
 }
 void UnloadImage(Image image) { if (image.data) stbi_image_free(image.data); }
 
-void DrawTexture(Texture texture, int posX, int posY, int width, int height) {
+void DrawTexture(Texture texture, int posX, int posY, int width, int height, Color color) {
     glBindTexture(GL_TEXTURE_2D, texture.id);
     glEnable(GL_TEXTURE_2D);
+    glColor4f(color.r, color.b, color.g, color.a);
     glBegin(GL_QUADS);
 
     glTexCoord2f(0.0f, 0.0f); glVertex2f(posX, posY);

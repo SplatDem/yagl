@@ -53,3 +53,8 @@ clang basic_example.c -o program -lyagl
  - **[PLANNED]** Add some kind of window global data
  - **[PLANNED]** Gamepad support
  - **[ACTIVE]** Fix colors
+
+# Third party modules
+ - **[PLANNED]** Implement physics
+ - **[PLANNED]** Implement lighting
+ - **[PLANNED]** Try sprite stacking
