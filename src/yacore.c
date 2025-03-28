@@ -22,14 +22,14 @@ void InitWindow(const char *title, int width, int height) {
     printl(NOTE, "GPU Ready");
 }
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
+void framebuffer_size_callback(GLFWwindow *window, int width, int height) { // Just ignore this
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, width, height, 0, -1, 1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-}
+} // WhereIsPascalCase
 
 void yaGLinit(const char *title, int width, int height) {
     if (!glfwInit()) printl(ERROR, "Failed to initialize OpenGL");

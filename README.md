@@ -12,8 +12,10 @@ Yagl is a simple and easy to use library for creating OpenGL based applications.
  - ttf/otf fonts rendering
  - 2D Camera that can move, zoom and rotate
  - Mouse and keyboard input
- - **SOON**: Audio
  - **SOON**: Shaders support
+
+## Optional modules
+ - **SOON**: Audio
 
 ## Getting started with basic example
 ```C

@@ -1,7 +1,7 @@
 #ifndef YAPI_H
 #define YAPI_H
 
-#define YAGL_VERSION "0.3.2" // Add camera support
+#define YAGL_VERSION "0.3.3" // Last number is resize fix
 
 #define ERROR   "\x1b[31mERROR\x1b[0m"
 #define WARNING "\x1b[33mWARNING\x1b[0m"
@@ -81,16 +81,16 @@ typedef enum {
 
     KeyZero  = 48, KeyOne   = 49,
     KeyTwo   = 50, KeyThree = 51,
-    KetFour  = 52, KeyFive  = 53,
+    KeyFour  = 52, KeyFive  = 53,
     KeySix   = 54, KeySeven = 55,
     KeyEight = 56, KeyNine  = 57,
     KeySemicolon    = 59,    // ;
     KeyEqual        = 61,    // =
 
-    KeyA = 65, KetB = 66,
+    KeyA = 65, KeyB = 66,
     KeyC = 67, KeyD = 68,
-    KeyE = 69, KetF = 70,
-    KetG = 71, KeyH = 72,
+    KeyE = 69, KeyF = 70,
+    KeyG = 71, KeyH = 72,
     KeyI = 73, KeyJ = 74,
     KeyK = 75, KeyL = 76,
     KeyM = 77, KeyN = 78,
@@ -141,7 +141,7 @@ typedef enum {
     MouseButtonExtra   = 4,     // Mouse Button Extra   (for cooller mouses)
     MouseButtonForward = 5,     // Mouse Button Forward (for cooller mouses)
     MouseButtonBack    = 6,     // Mouse Button Back    (for cooller mouses)
-} MouseButton; // Mouse doesn't implemented yet
+} MouseButton;
 
 // Mouse cursor states
 typedef enum { // TODO: Complete this enum
